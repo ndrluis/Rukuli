@@ -31,9 +31,5 @@ module Sikuli
     def height
       @java_obj.h()
     end
-    
-    def valid?
-      x && y && width && height
-    end
   end
 end
