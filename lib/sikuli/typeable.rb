@@ -1,8 +1,10 @@
-module Typeable
-  def type(text)
-    @java_obj.type(nil, text, 0)
-  end
+module Sikuli
+  module Typeable
+    def type(text)
+      @java_obj.type(nil, text, 0)
+    end
   
-  def keyDown()
+    def keyDown()
+    end
   end
 end

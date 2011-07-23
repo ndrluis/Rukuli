@@ -1,6 +1,7 @@
-module Searchable  
-  def find
-    raise "NOT YET IMPLEMENTED"
-    #should search and return nil if nothing found
+module Sikuli
+  module Searchable  
+    def find(filename)
+      Region.new(@java_obj.find(filename))
+    end
   end
 end
