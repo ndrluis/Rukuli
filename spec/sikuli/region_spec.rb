@@ -39,10 +39,46 @@ describe Sikuli::Region, "#Clickable" do
   end
   
   it "should not perform a click on an image that is outside of the region" do
-    lambda { @region.click("#{Dir.pwd}/apple.png")}.should raise_error RuntimeError
+    lambda { @region.click("#{Dir.pwd}/apple.png")}.should raise_error
   end
   
   it "should not perform a click on an image that does not exist" do
-    lambda { @region.click("#{Dir.pwd}/missing.png")}.should raise_error RuntimeError
+    lambda { @region.click("#{Dir.pwd}/missing.png")}.should raise_error
+  end
+end
+
+describe Sikuli::Region, "#Searchable" do
+  before(:all) do
+    #open the file 'test_area.jpg' in Preview at zoom level 0
+    @region = setup_test_area
+  end
+  
+  it "should find an image within the region" do
+    @region.find("#{Dir.pwd}/spec/support/images/smiley_face.png").should_not be_nil
+  end
+  
+  it "should return a region containing the found image" do
+    found_image = @region.find("#{Dir.pwd}/spec/support/images/smiley_face.png")
+    found_image.should be_an_instance_of Sikuli::Region
+  end
+  
+  it "should not find an image that is not in the region" do
+    lambda { @region.find("#{Dir.pwd}/spec/support/images/apple.png") }.should raise_error
+  end
+  
+  it "should not find an image that does not exist" do
+    lambda { @region.find("#{Dir.pwd}/spec/support/images/missing.png") }.should raise_error
+  end
+  
+  it "should return true if the image is found" do
+    @region.exists?("#{Dir.pwd}/spec/support/images/smiley_face.png").should be_true
+  end
+  
+  it "should return false if the image is found" do
+    @region.exists?("#{Dir.pwd}/spec/support/images/apple.png").should be_false
+  end
+  
+  it "should raise an exception if the image does not exist" do
+    @region.exists?("#{Dir.pwd}/spec/support/images/missing.png").should be_false
   end
 end

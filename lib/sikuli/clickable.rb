@@ -26,7 +26,7 @@ module Sikuli
       begin
         @java_obj.click(filename, 0)
       rescue
-        raise RuntimeError, "File Not Found: #{filename}"
+        raise "File Not Found: #{filename}"
       end
     end
     
