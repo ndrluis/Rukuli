@@ -32,4 +32,4 @@ Usage
 Examples
 --------
 
-*[Cucumber Suite](https://github.com/chaslemley/cucumber_sikuli)
+* [Cucumber Suite](https://github.com/chaslemley/cucumber_sikuli)
