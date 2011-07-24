@@ -39,11 +39,7 @@ describe Sikuli::Region, "#Clickable" do
   end
   
   it "should not perform a click on an image that is outside of the region" do
-    lambda { @region.click("#{Dir.pwd}/apple.png")}.should raise_error
-  end
-  
-  it "should not perform a click on an image that does not exist" do
-    lambda { @region.click("#{Dir.pwd}/missing.png")}.should raise_error
+    lambda { @region.click("apple.png")}.should raise_error
   end
 end
 
@@ -65,19 +61,11 @@ describe Sikuli::Region, "#Searchable" do
     lambda { @region.find("apple.png") }.should raise_error
   end
   
-  it "should not find an image that does not exist" do
-    lambda { @region.find("missing.png") }.should raise_error
-  end
-  
   it "should return true if the image is found" do
     @region.exists?("smiley_face.png").should be_true
   end
   
   it "should return false if the image is found" do
     @region.exists?("apple.png").should be_false
-  end
-  
-  it "should raise an exception if the image does not exist" do
-    @region.exists?("missing.png").should be_false
   end
 end

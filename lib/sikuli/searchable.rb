@@ -9,8 +9,9 @@ module Sikuli
       end
     end
     
-    def exists?(filename, time = 0.5)
-      @java_obj.exists(filename, time)
+    def exists?(filename, within = 0.9, time = 0.5)
+      pattern = org.sikuli.script::Pattern.new(filename).similar(within)
+      @java_obj.exists(pattern, time)
     end
   end
 end

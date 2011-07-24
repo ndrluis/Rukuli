@@ -17,4 +17,11 @@ module Sikuli
     
     java.lang.System.setProperty("SIKULI_IMAGE_PATH", paths.join(':'))
   end
+  
+  def self.logging=(boolean)
+    return unless [TrueClass, FalseClass].include? boolean.class
+    org.sikuli.script::Settings.InfoLogs = boolean
+    org.sikuli.script::Settings.ActionLogs = boolean
+    org.sikuli.script::Settings.DebugLogs = boolean
+  end
 end
