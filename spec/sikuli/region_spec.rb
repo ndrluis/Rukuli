@@ -19,7 +19,6 @@ end
 describe Sikuli::Region, "#Clickable" do
   before(:all) do
     #open the file 'test_area.jpg' in Preview at zoom level 0
-    Sikuli.addImagePath("#{Dir.pwd}/spec/support/images/")
     @region = setup_test_area
   end
   
@@ -51,7 +50,6 @@ end
 describe Sikuli::Region, "#Searchable" do
   before(:all) do
     #open the file 'test_area.jpg' in Preview at zoom level 0
-    Sikuli.addImagePath("#{Dir.pwd}/spec/support/images/")
     @region = setup_test_area
   end
   
@@ -60,8 +58,7 @@ describe Sikuli::Region, "#Searchable" do
   end
   
   it "should return a region containing the found image" do
-    found_image = @region.find("smiley_face.png")
-    found_image.should be_an_instance_of Sikuli::Region
+    @region.find("smiley_face.png").should be_an_instance_of Sikuli::Region
   end
   
   it "should not find an image that is not in the region" do

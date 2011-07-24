@@ -4,6 +4,7 @@ require 'rspec'
 require 'sikuli'
 
 def setup_test_area
+  Sikuli.addImagePath("#{Dir.pwd}/spec/support/images/")
   screen = Sikuli::Screen.new
   app = Sikuli::App.new('Preview')
   app.focus()
