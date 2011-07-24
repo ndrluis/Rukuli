@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.version     = Sikuli::VERSION
   s.authors     = ["Chas Lemley"]
   s.email       = ["chas.lemley@gmail.com"]
-  s.homepage    = ""
-  s.summary     = %q{Ruby wrapper for sikuli}
-  s.description = %q{Ruby wrapper for sikuli}
+  s.homepage    = "https://github.com/chaslemley/sikuli_ruby"
+  s.summary     = %q{Ruby wrapper for Sikuli GUI automation library}
+  s.description = %q{Sikuli allows you to interact with your application's user interface using image based search to automate user actions. Works on OSX only, Linux coming soon.}
 
   s.rubyforge_project = "sikuli"
 
