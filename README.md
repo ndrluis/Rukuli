@@ -21,6 +21,8 @@ Usage
     require 'java'
     require 'sikuli'
     
+    Sikuli.addImagePath("#{Dir.pwd}/images/")
+    
     screen = Sikuli::Screen.new
     screen.click(10, 10) # should open your apple menu
     
