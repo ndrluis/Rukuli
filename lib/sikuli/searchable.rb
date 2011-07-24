@@ -1,6 +1,6 @@
 module Sikuli
   module Searchable  
-    def find(filename, within = 0.7)
+    def find(filename, within = 0.9)
       begin
         pattern = org.sikuli.script::Pattern.new(filename).similar(within)
         Region.new(@java_obj.find(pattern))
