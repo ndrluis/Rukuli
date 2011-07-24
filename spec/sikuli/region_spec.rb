@@ -30,6 +30,10 @@ describe Sikuli::Region, "#Clickable" do
     lambda { @region.doubleClick(12, 491) }.should_not raise_error
   end
   
+  it "should perform a double click on an image" do
+    lambda { @region.doubleClick("smiley_face.png") }.should_not raise_error
+  end
+  
   it "should perform a drag and drop" do
     lambda { @region.dragDrop(12, 12, 491, 491) }.should_not raise_error
   end
@@ -65,7 +69,7 @@ describe Sikuli::Region, "#Searchable" do
     @region.exists?("smiley_face.png").should be_true
   end
   
-  it "should return false if the image is found" do
+  it "should return false if the image is not found" do
     @region.exists?("apple.png").should be_false
   end
 end

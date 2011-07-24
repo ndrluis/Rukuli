@@ -8,8 +8,12 @@ module Sikuli
       end
     end
 
-    def doubleClick(x, y)
-      @java_obj.doubleClick(org.sikuli.script::Location.new(x, y).offset(x(), y()), 0)
+    def doubleClick(*args)
+      case args.length
+        when 1 then click_image(args[0], { :double => true })
+        when 2 then click_point(args[0], args[1], {:double => true })
+        else raise ArgumentError
+      end
     end
   
     def dragDrop(start_x, start_y, end_x, end_y)
@@ -22,16 +26,24 @@ module Sikuli
     
     private
     
-    def click_image(filename)      
+    def click_image(filename, opts = {})      
       begin
-        @java_obj.click(filename, 0)
+        if opts[:double]
+          @java_obj.doubleClick(filename, 0)
+        else
+          @java_obj.click(filename, 0)
+        end
       rescue
         raise "File Not Found: #{filename}"
       end
     end
     
-    def click_point(x, y)
-      @java_obj.click(org.sikuli.script::Location.new(x, y).offset(x(), y()), 0)
+    def click_point(x, y, opts = {})
+      if opts[:double]
+        @java_obj.doubleClick(org.sikuli.script::Location.new(x, y).offset(x(), y()), 0)
+      else
+        @java_obj.click(org.sikuli.script::Location.new(x, y).offset(x(), y()), 0)
+      end
     end
   end
 end
