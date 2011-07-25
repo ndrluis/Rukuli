@@ -22,6 +22,10 @@ describe Sikuli::Region, "#Searchable" do
     @region.exists?("smiley_face.png").should be_true
   end
   
+  it "should allow you to call contains?" do
+    @region.contains?("smiley_face.png").should be_true
+  end
+  
   it "should return false if the image is not found" do
     @region.exists?("apple.png").should be_false
   end

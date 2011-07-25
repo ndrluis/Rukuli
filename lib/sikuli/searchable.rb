@@ -13,5 +13,6 @@ module Sikuli
       pattern = org.sikuli.script::Pattern.new(filename).similar(similarity)
       @java_obj.exists(pattern, time)
     end
+    alias_method :contains?, :exists?
   end
 end
