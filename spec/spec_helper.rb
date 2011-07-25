@@ -3,10 +3,10 @@ require 'java'
 require 'rspec'
 require 'sikuli'
 
-Sikuli.logging = false
+Sikuli::Config.logging = false
 
 def setup_test_area
-  Sikuli.addImagePath("#{Dir.pwd}/spec/support/images/")
+  Sikuli::Config.image_path = "#{Dir.pwd}/spec/support/images/"
   screen = Sikuli::Screen.new
   app = Sikuli::App.new('Preview')
   app.focus()

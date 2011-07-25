@@ -6,7 +6,7 @@ Sikuli Ruby
 Requirements
 ------------
 
-* JRuby (rvm install jruby)
+* JRuby `rvm install jruby`
 * [Sikuli X 1.0rc2](http://sikuli.org/)
 * OSX
 
@@ -21,7 +21,10 @@ Usage
     require 'java'
     require 'sikuli'
     
-    Sikuli.addImagePath("#{Dir.pwd}/images/")
+    Sikuli::Config.run do |config| 
+      config.image_path = "#{Dir.pwd}/images/"
+      config.logging = false
+    end
     
     screen = Sikuli::Screen.new
     screen.click(10, 10) # should open your apple menu
