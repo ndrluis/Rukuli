@@ -4,8 +4,11 @@ require "sikuli/version"
 require "sikuli/app"
 require "sikuli/region"
 require "sikuli/screen"
+require "sikuli/key_code"
 
 module Sikuli
+  include KeyCode
+  
   def self.getImagePath
     paths = java.lang.System.getProperty("SIKULI_IMAGE_PATH") || ""
     paths.split(":")

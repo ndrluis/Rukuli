@@ -10,19 +10,19 @@ describe Sikuli, "image path" do
     Sikuli.getImagePath().should == ['/Users/images/']
   end
   
-  it "should allow logging to be turned off" do
-    Sikuli.logging = false
-    
-    org.sikuli.script::Settings.InfoLogs.should be_false
-    org.sikuli.script::Settings.ActionLogs.should be_false
-    org.sikuli.script::Settings.DebugLogs.should be_false
-  end
-  
   it "should allow logging to be turned on" do
     Sikuli.logging = true
     
     org.sikuli.script::Settings.InfoLogs.should be_true
     org.sikuli.script::Settings.ActionLogs.should be_true
     org.sikuli.script::Settings.DebugLogs.should be_true
+  end
+  
+  it "should allow logging to be turned off" do
+    Sikuli.logging = false
+    
+    org.sikuli.script::Settings.InfoLogs.should be_false
+    org.sikuli.script::Settings.ActionLogs.should be_false
+    org.sikuli.script::Settings.DebugLogs.should be_false
   end
 end
