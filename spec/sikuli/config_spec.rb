@@ -34,4 +34,14 @@ describe Sikuli::Config do
     org.sikuli.script::Settings.ActionLogs.should be_false
     org.sikuli.script::Settings.DebugLogs.should be_false
   end
+  
+  it "should allow us to turn off highlighting on find" do
+    Sikuli::Config.highlight_on_find = false
+    Sikuli::Config.highlight_on_find.should be_false
+  end
+  
+  it "should allow us to turn on highlighting on find" do
+    Sikuli::Config.highlight_on_find = true
+    Sikuli::Config.highlight_on_find.should be_true
+  end
 end

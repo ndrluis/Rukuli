@@ -3,7 +3,9 @@ module Sikuli
     def find(filename, similarity = 0.9)
       begin
         pattern = org.sikuli.script::Pattern.new(filename).similar(similarity)
-        Region.new(@java_obj.find(pattern))
+        region = Region.new(@java_obj.find(pattern))
+        region.highlight if Sikuli::Config.highlight_on_find
+        return region
       rescue
         raise "File Not Found: #{filename}"
       end
