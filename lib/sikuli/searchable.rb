@@ -6,8 +6,8 @@ module Sikuli
         region = Region.new(@java_obj.find(pattern))
         region.highlight if Sikuli::Config.highlight_on_find
         return region
-      rescue
-        raise "File Not Found: #{filename}"
+      rescue NativeException => e
+        raise_exception e, filename
       end
     end
 
@@ -21,8 +21,8 @@ module Sikuli
           match
         end
         return regions
-      rescue
-        raise "File Not Found: #{filename}"
+      rescue NativeException => e
+        raise_exception e, filename
       end
     end
 
@@ -36,6 +36,14 @@ module Sikuli
 
     def build_pattern(filename, similarity)
       org.sikuli.script::Pattern.new(filename).similar(similarity)
+    end
+
+    def raise_exception(e, filename)
+      if e.message == "org.sikuli.script.FindFailed: File null not exists"
+        raise Sikuli::FileDoesNotExist, "The file '#{filename}' does not exist."
+      else
+        raise Sikuli::ImageNotFound, "The image '#{filename}' did not match in this region."
+      end
     end
   end
 end
