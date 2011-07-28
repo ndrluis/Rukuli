@@ -43,8 +43,10 @@ Usage
     
 Running the test suite
 ----------------------
-You need to open `test_area.jpg` in **Preview** from `spec/support/images/` directory
+
+1. You need to open `test_area.jpg` in **Preview** from `spec/support/images/` directory
 before running tests.
+2. You also need to open the **TextEdit** app
 
 Examples
 --------
