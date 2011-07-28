@@ -10,6 +10,14 @@ Requirements
 * [Sikuli X 1.0rc2](http://sikuli.org/)
 * OSX
 
+Compatibility
+------------
+It's recommended to use JRuby ~> 1.6.0 and run it in 1.9 mode to get unicode characters working
+as expected.
+```
+export JRUBY_OPTS=--1.9
+```
+
 Installation
 ------------
 

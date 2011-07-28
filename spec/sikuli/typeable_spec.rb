@@ -19,8 +19,6 @@ describe Sikuli::Region, "#Typeable" do
   end
   
   context "unicode characters" do
-    # tell JRuby to run in 1.9 mode
-    # http://stackoverflow.com/questions/4755900/how-to-make-jruby-1-6-default-to-ruby-1-9
     it("backspace")   { @region.type(Sikuli::KEY_BACKSPACE * 50) }
     it("return")      { @region.type(Sikuli::KEY_RETURN) }
     xit("up arrow")   { @region.type(Sikuli::UP_ARROW) }
