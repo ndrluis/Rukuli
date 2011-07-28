@@ -14,24 +14,24 @@ Installation
 ------------
 
     gem install sikuli
-    
+
 Usage
 -----
-    
+
     require 'java'
     require 'sikuli'
-    
-    Sikuli::Config.run do |config| 
+
+    Sikuli::Config.run do |config|
       config.image_path = "#{Dir.pwd}/images/"
       config.logging = false
     end
-    
+
     screen = Sikuli::Screen.new
     screen.click(10, 10) # should open your apple menu
-    
+
     app = Sikuli::App.new("iPhone Simulator")
     app.window.click('ui_element.png') if app.window.exists?('ui_element.png')
-    
+
 Examples
 --------
 
