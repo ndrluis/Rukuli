@@ -21,7 +21,6 @@ describe Sikuli::Region, "#Typeable" do
   context "unicode characters" do
     it("backspace")   { @region.type(Sikuli::KEY_BACKSPACE * 50) }
     it("return")      { @region.type(Sikuli::KEY_RETURN) }
-    xit("up arrow")   { @region.type(Sikuli::UP_ARROW) }
     it("left arrow")  { @region.type(Sikuli::LEFT_ARROW) }
     it("down arrow")  { @region.type(Sikuli::DOWN_ARROW) }
     it("right arrow") { @region.type(Sikuli::RIGHT_ARROW) }

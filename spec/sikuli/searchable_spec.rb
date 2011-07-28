@@ -28,4 +28,28 @@ describe Sikuli::Region, "#Searchable" do
   it "should return false if the image is not found" do
     @region.exists?("apple.png").should be_false
   end
+
+  context "#find_all" do
+    before(:all) do
+      @matches = @region.find_all("green_apple.png")
+    end
+
+    it "should raise an error if no matches are found" do
+      lambda { @region.find_all("apple.png") }.should raise_error
+    end
+
+    it "should return an array" do
+      @matches.should be_an_instance_of Array
+    end
+
+    it "should contain 4 matches" do
+      @matches.length.should == 4
+    end
+
+    it "should contain regions" do
+      @matches.each do |m|
+        m.should be_an_instance_of Sikuli::Region
+      end
+    end
+  end
 end
