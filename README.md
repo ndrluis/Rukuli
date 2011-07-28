@@ -14,6 +14,7 @@ Compatibility
 -------------
 It's recommended to use JRuby ~> 1.6.0 and run it in 1.9 mode to get unicode characters working
 as expected.
+
 ```
 export JRUBY_OPTS=--1.9
 ```
@@ -42,7 +43,7 @@ Usage
     
 Running the test suite
 ----------------------
-You need to open `test_area.jpg` in `spec/support/images/` directory
+You need to open `test_area.jpg` in **Preview** from `spec/support/images/` directory
 before running tests.
 
 Examples
