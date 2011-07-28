@@ -11,7 +11,7 @@ Requirements
 * OSX
 
 Compatibility
-------------
+-------------
 It's recommended to use JRuby ~> 1.6.0 and run it in 1.9 mode to get unicode characters working
 as expected.
 ```
@@ -40,6 +40,11 @@ Usage
     app = Sikuli::App.new("iPhone Simulator")
     app.window.click('ui_element.png') if app.window.exists?('ui_element.png')
     
+Running the test suite
+----------------------
+You need to open `test_area.jpg` in `spec/support/images/` directory
+before running tests.
+
 Examples
 --------
 

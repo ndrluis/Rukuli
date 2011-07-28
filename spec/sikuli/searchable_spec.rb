@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Sikuli::Region, "#Searchable" do
   before(:all) do
-    #open the file 'test_area.jpg' in Preview at zoom level 0
     @region = setup_test_area
   end
   
