@@ -4,20 +4,20 @@ describe Sikuli::Region, "#Typeable" do
   before(:all) do
     app = Sikuli::App.new("TextMate")
     app.focus
-    @region = app.window 
+    @region = app.window
   end
-  
+
   context "modifying text input with" do
     it "apple key" do
       @region.type("n", Sikuli::KEY_CMD)
     end
-    
+
     it "shift key" do
       @region.type("this should be lower case")
       @region.type("this should be upper case", Sikuli::KEY_SHIFT)
     end
   end
-  
+
   context "unicode characters" do
     # tell JRuby to run in 1.9 mode
     # http://stackoverflow.com/questions/4755900/how-to-make-jruby-1-6-default-to-ruby-1-9

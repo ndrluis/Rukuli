@@ -15,7 +15,7 @@ module Sikuli
         else raise ArgumentError
       end
     end
-  
+
     def dragDrop(start_x, start_y, end_x, end_y)
       @java_obj.dragDrop(
         org.sikuli.script::Location.new(start_x, start_y).offset(x(), y()),
@@ -23,10 +23,10 @@ module Sikuli
         0
       )
     end
-    
+
     private
-    
-    def click_image(filename, opts = {})      
+
+    def click_image(filename, opts = {})
       begin
         if opts[:double]
           @java_obj.doubleClick(filename, 0)
@@ -37,7 +37,7 @@ module Sikuli
         raise "File Not Found: #{filename}"
       end
     end
-    
+
     def click_point(x, y, opts = {})
       if opts[:double]
         @java_obj.doubleClick(org.sikuli.script::Location.new(x, y).offset(x(), y()), 0)
