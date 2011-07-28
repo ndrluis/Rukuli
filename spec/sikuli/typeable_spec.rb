@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Sikuli::Region, "#Typeable" do
   before(:all) do
-    app = Sikuli::App.new("TextMate")
+    app = Sikuli::App.new("TextEdit")
     app.focus
     @region = app.window 
   end
