@@ -1,5 +1,21 @@
+# The Clickable module defines interaction with the mouse. It is included in
+# the Region class.
+#
 module Sikuli
   module Clickable
+
+    # Public: Performs a single click on an image match or point (x, y)
+    #
+    # args - String representing filename of image to find and click
+    # args - Fixnum, Fixnum representing x and y coordinates within
+    # a Region (0,0) is the top left
+    #
+    # Examples
+    #
+    #   region.click('smile.png')
+    #   region.click(123, 432)
+    #
+    # Returns nothing
     def click(*args)
       case args.length
         when 1 then click_image(args[0])
@@ -8,6 +24,18 @@ module Sikuli
       end
     end
 
+    # Public: Performs a double click on an image match or point (x, y)
+    #
+    # args - String representing filename of image to find and click
+    # args - Fixnum, Fixnum representing x and y coordinates within
+    # a Region (0,0) is the top left
+    #
+    # Examples
+    #
+    #   region.double_click('smile.png')
+    #   region.double_click(123, 432)
+    #
+    # Returns nothing
     def doubleClick(*args)
       case args.length
         when 1 then click_image(args[0], { :double => true })
@@ -16,6 +44,18 @@ module Sikuli
       end
     end
 
+    # Public: Performs a mouse down, drag, and mouse up
+    #
+    # start_x - Fixnum representing the x of the mouse down
+    # start_y - Fixnum representing the y of the mouse down
+    # end_x   - Fixnum representing the x of the mouse up
+    # end_y   - Fixnum representing the y of the mouse up
+    #
+    # Examples
+    #
+    #   region.drag_drop(20, 12, 23, 44)
+    #
+    # Returns nothing
     def dragDrop(start_x, start_y, end_x, end_y)
       @java_obj.dragDrop(
         org.sikuli.script::Location.new(start_x, start_y).offset(x(), y()),

@@ -22,7 +22,5 @@ describe Sikuli::Region, "#Typeable" do
     it("backspace")   { @region.type(Sikuli::KEY_BACKSPACE * 50) }
     it("return")      { @region.type(Sikuli::KEY_RETURN) }
     it("left arrow")  { @region.type(Sikuli::LEFT_ARROW) }
-    it("down arrow")  { @region.type(Sikuli::DOWN_ARROW) }
-    it("right arrow") { @region.type(Sikuli::RIGHT_ARROW) }
   end
 end
