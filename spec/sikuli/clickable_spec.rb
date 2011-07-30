@@ -10,15 +10,15 @@ describe Sikuli::Region, "#Clickable" do
   end
 
   it "should perform a double click 10, 1040" do
-    lambda { @region.doubleClick(12, 491) }.should_not raise_error
+    lambda { @region.double_click(12, 491) }.should_not raise_error
   end
 
   it "should perform a double click on an image" do
-    lambda { @region.doubleClick("smiley_face.png") }.should_not raise_error
+    lambda { @region.double_click("smiley_face.png") }.should_not raise_error
   end
 
   it "should perform a drag and drop" do
-    lambda { @region.dragDrop(12, 12, 491, 491) }.should_not raise_error
+    lambda { @region.drag_drop(12, 12, 491, 491) }.should_not raise_error
   end
 
   it "should perform a click on an image" do
