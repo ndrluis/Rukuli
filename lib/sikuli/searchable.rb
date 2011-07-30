@@ -105,21 +105,5 @@ module Sikuli
     def build_pattern(filename, similarity)
       org.sikuli.script::Pattern.new(filename).similar(similarity)
     end
-
-    # Private: interpret a java NativeException and raises a more descriptive
-    # exception
-    #
-    # exception - The original java exception thrown by the sikuli java_obj
-    # filename  - A string representing the filename to include in the
-    # exception message
-    #
-    # Returns nothing
-    def raise_exception(exception, filename)
-      if exception.message == "org.sikuli.script.FindFailed: File null not exists"
-        raise Sikuli::FileDoesNotExist, "The file '#{filename}' does not exist."
-      else
-        raise Sikuli::ImageNotFound, "The image '#{filename}' did not match in this region."
-      end
-    end
   end
 end

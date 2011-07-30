@@ -38,8 +38,8 @@ module Sikuli
     # Returns nothing
     def double_click(*args)
       case args.length
-        when 1 then click_image(args[0], { :double => true })
-        when 2 then click_point(args[0], args[1], {:double => true })
+        when 1 then click_image(args[0], true)
+        when 2 then click_point(args[0], args[1], true)
         else raise ArgumentError
       end
     end
@@ -66,20 +66,40 @@ module Sikuli
 
     private
 
-    def click_image(filename, opts = {})
+    # Private: clicks on a matched Region based on an image based search
+    #
+    # filename - A String representation of the filename of the region to
+    # match against
+    # is_double - (optional) Boolean determining if should be a double click
+    #
+    # Returns nothing
+    #
+    # Throws Sikuli::FileNotFound if the file could not be found on the system
+    # Throws Sikuli::ImageNotMatched if no matches are found within the region
+    def click_image(filename, is_double = false)
       begin
-        if opts[:double]
+        if is_double
           @java_obj.doubleClick(filename, 0)
         else
           @java_obj.click(filename, 0)
         end
-      rescue
-        raise "File Not Found: #{filename}"
+      rescue NativeException => e
+        raise_exception e, filename
       end
     end
 
-    def click_point(x, y, opts = {})
-      if opts[:double]
+    # Private: clicks on a point relative to a Region's top left corner
+    #
+    # x         - a Fixnum representing the x component of the point to click
+    # y         - a Fixnum representing the y component of the point to click
+    # is_double - (optional) Boolean determining if should be a double click
+    #
+    # Returns nothing
+    #
+    # Throws Sikuli::FileNotFound if the file could not be found on the system
+    # Throws Sikuli::ImageNotMatched if no matches are found within the region
+    def click_point(x, y, is_double = false)
+      if is_double
         @java_obj.doubleClick(org.sikuli.script::Location.new(x, y).offset(x(), y()), 0)
       else
         @java_obj.click(org.sikuli.script::Location.new(x, y).offset(x(), y()), 0)

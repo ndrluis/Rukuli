@@ -26,6 +26,7 @@ describe Sikuli::Region, "#Clickable" do
   end
 
   it "should not perform a click on an image that is outside of the region" do
-    lambda { @region.click("apple.png")}.should raise_error
+    lambda { @region.click("apple.png") }.should
+      # raise_error(Sikuli::ImageNotFound, "The image 'apple.png' did not match in this region.")
   end
 end
