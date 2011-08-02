@@ -24,9 +24,38 @@ module Sikuli
     def find(filename, similarity = 0.9)
       begin
         pattern = build_pattern(filename, similarity)
-        region = Region.new(@java_obj.find(pattern))
-        region.highlight if Sikuli::Config.highlight_on_find
-        return region
+        match = Region.new(@java_obj.find(pattern))
+        match.highlight if Sikuli::Config.highlight_on_find
+        return match
+      rescue NativeException => e
+        raise_exception e, filename
+      end
+    end
+
+    # Public: wait for an match to appear within a region
+    #
+    # filename   - A String representation of the filename to match against
+    # time       - A Fixnum representing the amount of time to wait defaults
+    # to 2 seconds
+    # similarity - A Float between 0 and 1 representing the threshold for
+    # matching an image. Passing 1 corresponds to a 100% pixel for pixel
+    # match. Defaults to 0.9 (90% match)
+    #
+    # Examples
+    #
+    #    region.wait('needle.png') # wait for needle.png to appear for up to 1 second
+    #    region.wait('needle.png', 10) # wait for needle.png to appear for 10 seconds
+    #
+    # Returns nothing
+    #
+    # Throws Sikuli::FileNotFound if the file could not be found on the system
+    # Throws Sikuli::ImageNotMatched if no matches are found within the region
+    def wait(filename, time = 2, similarity = 0.9)
+      begin
+        pattern = build_pattern(filename, similarity)
+        match = Region.new(@java_obj.wait(pattern, time))
+        match.highlight if Sikuli::Config.highlight_on_find
+        return match
       rescue NativeException => e
         raise_exception e, filename
       end

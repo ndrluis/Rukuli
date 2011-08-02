@@ -39,6 +39,18 @@ describe Sikuli::Region, "#Searchable" do
     @region.exists?("no_photo.png").should be_false
   end
 
+  context "#wait" do
+    it "should raise an error if no match is found after a given time" do
+      lambda { @region.wait('apple.png') }.should
+        raise_error(Sikuli::ImageNotFound, "The image 'apple.png' did not match in this region.")
+    end
+
+    it "should return a Region object when a match is found" do
+      match = @region.wait('green_apple.png', 5)
+      match.should be_an_instance_of Sikuli::Region
+    end
+  end
+
   context "#find_all" do
     before(:all) do
       @matches = @region.find_all("green_apple.png")
