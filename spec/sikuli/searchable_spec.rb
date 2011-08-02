@@ -24,19 +24,16 @@ describe Sikuli::Region, "#Searchable" do
   end
 
   it "should return true if the image is found" do
-    @region.exists?("smiley_face.png").should be_true
+    @region.find!("smiley_face.png").should be_an_instance_of Sikuli::Region
   end
 
-  it "should allow you to call contains?" do
-    @region.contains?("smiley_face.png").should be_true
+  it "should return nil if the image is not found" do
+    @region.find!("apple.png").should be_nil
   end
 
-  it "should return false if the image is not found" do
-    @region.exists?("apple.png").should be_false
-  end
-
-  it "should return false if the file does not exist" do
-    @region.exists?("no_photo.png").should be_false
+  it "should raise an exception if the file does not exist" do
+    lambda { @region.find!("no_photo.png") }.should
+      raise_error(Sikuli::FileDoesNotExist, "The file 'no_photo.png' does not exist.")
   end
 
   context "#wait" do
