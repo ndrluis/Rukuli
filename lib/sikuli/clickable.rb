@@ -43,6 +43,28 @@ module Sikuli
         else raise ArgumentError
       end
     end
+    
+    # Public: Performs a click and hold on an image match or point (x, y)
+    #
+    # args - String representing filename of image to find and click
+    # args - Fixnum, Fixnum representing x and y coordinates within
+    # a Region (0,0) is the top left
+    # seconds - Fixnum representing the number of seconds to hold down
+    # before releasing
+    #
+    # Examples
+    #
+    #   region.click_and_hold('smile.png', 2)
+    #   region.click_and_hold(123, 432, 2)
+    #
+    # Returns nothing
+    def click_and_hold(seconds = 1, *args)
+      case args.length
+        when 1 then click_image_and_hold(args[0], seconds)
+        when 2 then click_point_and_hold(args[0], args[1], seconds)
+        else raise ArgumentError
+      end
+    end
 
     # Public: Performs a mouse down, drag, and mouse up
     #
@@ -70,13 +92,56 @@ module Sikuli
     #
     # filename - A String representation of the filename of the region to
     # match against
+    # seconds  - The length in seconds to hold the mouse
+    #
+    # Returns nothing
+    #
+    # Throws Sikuli::FileNotFound if the file could not be found on the system
+    # Throws Sikuli::ImageNotMatched if no matches are found within the region
+    def click_image_and_hold(filename, seconds)
+      begin
+        pattern = org.sikuli.script::Pattern.new(filename).similar(0.9)
+        @java_obj.hover(pattern)
+        @java_obj.mouseDown(java.awt.event.InputEvent::BUTTON1_MASK)
+        sleep(seconds.to_i)
+        @java_obj.mouseUp(0)
+      rescue NativeException => e
+        raise_exception e, filename
+      end
+    end
+    
+    # Private: clicks on a point within the region
+    #
+    # filename - A String representation of the filename of the region to
+    # match against
+    #
+    # Returns nothing
+    #
+    # Throws Sikuli::FileNotFound if the file could not be found on the system
+    # Throws Sikuli::ImageNotMatched if no matches are found within the region
+    def click_point_and_hold(x, y, seconds)
+      begin
+        location = org.sikuli.script::Location.new(x, y).offset(x(), y())
+        @java_obj.hover(location)
+        @java_obj.mouseDown(java.awt.event.InputEvent::BUTTON1_MASK)
+        sleep(seconds.to_i)
+        @java_obj.mouseUp(0)
+      rescue NativeException => e
+        raise_exception e, filename
+      end
+    end
+
+    # Private: clicks on a matched Region based on an image based search
+    #
+    # filename - A String representation of the filename of the region to
+    # match against
     # is_double - (optional) Boolean determining if should be a double click
     #
     # Returns nothing
     #
     # Throws Sikuli::FileNotFound if the file could not be found on the system
     # Throws Sikuli::ImageNotMatched if no matches are found within the region
-    def click_image(filename, is_double = false)
+    def click_image(filename, is_double = false, and_hold = false)
       begin
         if is_double
           @java_obj.doubleClick(filename, 0)
