@@ -7,7 +7,7 @@ Requirements
 ------------
 
 * JRuby `rvm install jruby`
-* [Sikuli X 1.0rc2](http://sikuli.org/)
+* [Sikuli X 1.0rc3](http://sikuli.org/)
 * OSX
 
 Compatibility
