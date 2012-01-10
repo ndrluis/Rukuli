@@ -1,4 +1,5 @@
-require "sikuli/sikuli-script.jar"
+require "sikuli/platform"
+require Sikuli::Platform.sikuli_script_path
 require "sikuli/version"
 
 require "sikuli/app"
