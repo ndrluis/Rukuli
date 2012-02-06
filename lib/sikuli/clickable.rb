@@ -86,7 +86,43 @@ module Sikuli
       )
     end
 
+    # Public: Simulates turning of the mouse wheel up
+    #
+    # steps - Fixnum representing the number of steps to turn the mouse wheel
+    #
+    # Examples
+    #
+    #   region.wheel_up(10)
+    #
+    # Returns nothing
+    def wheel_up(steps = 1)
+      @java_obj.wheel(-1, steps)
+    end
+
+    # Public: Simulates turning of the mouse wheel down
+    #
+    # steps - Fixnum representing the number of steps to turn the mouse wheel
+    #
+    # Examples
+    #
+    #   region.wheel_down(10)
+    #
+    # Returns nothing
+    def wheel_down(steps = 1)
+      @java_obj.wheel(1, steps)
+    end
+
     private
+
+    # Private: turns the mouse wheel
+    #
+    # direction - Fixnum represeting direction to turn wheel
+    # steps - the number of steps to turn the mouse wheel
+    #
+    # Returns nothing
+    def wheel(direction, steps)
+      @java_obj.wheel(direction, steps)
+    end
 
     # Private: clicks on a matched Region based on an image based search
     #

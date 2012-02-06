@@ -1,3 +1,5 @@
+require 'java'
+
 # These constants represent keyboard codes for interacting with the keyboard.
 # Keyboard interaction is defined in the Sikuli::Typeable module.
 #
