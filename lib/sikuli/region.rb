@@ -58,6 +58,12 @@ module Sikuli
       @java_obj.h()
     end
 
+		# Public: provide access to all region methods provided by the SikuliScript API
+		# See http://sikuli.org/doc/java/edu/mit/csail/uid/Region.html
+		def method_missing method_name, *args, &block
+      @java_obj.send method_name, *args, &block
+    end
+
     private
 
     # Private: interpret a java NativeException and raises a more descriptive
