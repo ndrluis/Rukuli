@@ -39,7 +39,7 @@ Usage
     screen.click(10, 10) # should open your apple menu
 
     app = Sikuli::App.new("iPhone Simulator")
-    app.window.click('ui_element.png') if app.window.exists?('ui_element.png')
+    app.window.click('ui_element.png') if app.window.find('ui_element.png')
     
 Running the test suite
 ----------------------
