@@ -11,7 +11,7 @@ module Sikuli
 
     def self.sikuli_script_path
       if OS_X
-        path = "/Applications/Sikuli-IDE.app/sikuli-script.jar"
+        path = "/Applications/Sikuli-IDE.app/Contents/Resources/Java/sikuli-script.jar"
       else
         raise LoadError, no_sikuli_home_err_msg if ENV['SIKULI_HOME'].nil?
         path = "#{ENV['SIKULI_HOME']}/sikuli-script.jar"
