@@ -1,4 +1,4 @@
-Rukuli
+Rukuli  ** UNDER DEVELOPMENT **
 ======
 
 This project is a fork of [sikuli_ruby](https://github.com/chaslemley/sikuli_ruby)!
