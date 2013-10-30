@@ -68,3 +68,7 @@ Contributing
 * Commit your changes (git commit -am 'Add some feature')
 * Push to the branch (git push origin my-new-feature)
 * Create new Pull Request
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/andreanastacio/rukuli/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
