@@ -1,6 +1,9 @@
 Rukuli  ** UNDER DEVELOPMENT **
 ======
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/andreanastacio/rukuli/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
+
 This project is a fork of [sikuli_ruby](https://github.com/chaslemley/sikuli_ruby)!
 
 [Sikuli](http://sikuli.org/) allows you to interact with your application's user interface using image based search to automate user actions.
@@ -68,7 +71,3 @@ Contributing
 * Commit your changes (git commit -am 'Add some feature')
 * Push to the branch (git push origin my-new-feature)
 * Create new Pull Request
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/andreanastacio/rukuli/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
