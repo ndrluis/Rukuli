@@ -112,6 +112,26 @@ module Sikuli
       @java_obj.wheel(1, steps)
     end
 
+    # Public: Performs a hover on an image match or point (x, y)
+    #
+    # args - String representing filename of image to find and hover
+    # args - Fixnum, Fixnum representing x and y coordinates within
+    # a Region (0,0) is the top left
+    #
+    # Examples
+    #
+    #   region.hover('smile.png')
+    #   region.hover(123, 432)
+    #
+    # Returns nothing
+    def hover(*args)
+      case args.length
+        when 1 then hover_image(args[0])
+        when 2 then hover_point(args[0], args[1])
+        else raise ArgumentError
+      end
+    end
+
     private
 
     # Private: turns the mouse wheel
@@ -205,6 +225,36 @@ module Sikuli
       else
         @java_obj.click(org.sikuli.script::Location.new(x, y).offset(x(), y()), 0)
       end
+    end
+
+    # Private: hovers on a matched Region based on an image based search
+    #
+    # filename - A String representation of the filename of the region to
+    # match against
+    # 
+    # Returns nothing
+    #
+    # Throws Sikuli::FileNotFound if the file could not be found on the system
+    # Throws Sikuli::ImageNotMatched if no matches are found within the region
+    def hover_image(filename)
+      begin
+        @java_obj.hover(filename)
+      rescue NativeException => e
+        raise_exception e, filename
+      end
+    end
+
+    # Private: hovers on a point relative to a Region's top left corner
+    #
+    # x         - a Fixnum representing the x component of the point to hover
+    # y         - a Fixnum representing the y component of the point to hover
+    #
+    # Returns nothing
+    #
+    # Throws Sikuli::FileNotFound if the file could not be found on the system
+    # Throws Sikuli::ImageNotMatched if no matches are found within the region
+    def hover_point(x, y)
+      @java_obj.hover(org.sikuli.script::Location.new(x, y).offset(x(), y()))
     end
   end
 end
