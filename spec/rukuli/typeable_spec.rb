@@ -16,6 +16,10 @@ describe Rukuli::Region, "#Typeable" do
       @region.type("this should be lower case")
       @region.type("this should be upper case", Rukuli::KEY_SHIFT)
     end
+
+    it "types and presses enter" do
+      @region.enter("this should be followed by the enter key")
+    end
   end
 
   context "unicode characters" do

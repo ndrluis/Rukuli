@@ -26,7 +26,7 @@ module Rukuli
     #
     # Returns nothing
     def enter(text)
-      @java_obj.type(text + Sikuli::KEY_RETURN)
+      @java_obj.type(text + Rukuli::KEY_RETURN)
     end
   end
 end
