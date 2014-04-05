@@ -11,9 +11,10 @@ module Rukuli
   KEY_SHIFT = KeyModifier::SHIFT
   KEY_CTRL  = KeyModifier::CTRL
   KEY_ALT   = KeyModifier::ALT
-  
+
   KEY_BACKSPACE = Key::BACKSPACE
   KEY_RETURN    = Key::ENTER
+  KEY_ESC       = Key::ESC
   LEFT_ARROW    = Key::LEFT
   RIGHT_ARROW   = Key::RIGHT
   UP_ARROW      = Key::UP
