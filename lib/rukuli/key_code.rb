@@ -15,6 +15,7 @@ module Rukuli
   KEY_BACKSPACE = Key::BACKSPACE
   KEY_RETURN    = Key::ENTER
   KEY_ESC       = Key::ESC
+  KEY_TAB       = Key::TAB
   LEFT_ARROW    = Key::LEFT
   RIGHT_ARROW   = Key::RIGHT
   UP_ARROW      = Key::UP

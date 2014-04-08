@@ -26,5 +26,6 @@ describe Rukuli::Region, "#Typeable" do
     it("backspace")   { @region.type(Rukuli::KEY_BACKSPACE * 50) }
     it("return")      { @region.type(Rukuli::KEY_RETURN) }
     it("left arrow")  { @region.type(Rukuli::LEFT_ARROW) }
+    it("tab")         { @region.type(Rukuli::KEY_TAB) }
   end
 end
