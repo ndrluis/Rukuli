@@ -1,3 +1,6 @@
+# Note
+Now Sikuli supports ruby in IDE [More info](https://github.com/andreanastacio/Rukuli/issues/19)
+
 # Rukuli
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/andreanastacio/rukuli/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
