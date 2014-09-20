@@ -17,6 +17,14 @@ describe Rukuli::Region, "#Clickable" do
     expect { @region.double_click("smiley_face.png") }.not_to raise_error
   end
 
+  it "should perform a right click at 10, 10" do
+    expect { @region.right_click(10, 10) }.not_to raise_error
+  end
+
+  it "should perform a right click on an image" do
+    expect { @region.right_click("smiley_face.png") }.not_to raise_error
+  end
+
   it "should perform a drag and drop" do
     expect { @region.drag_drop(12, 12, 491, 491) }.not_to raise_error
   end
