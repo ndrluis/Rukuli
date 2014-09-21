@@ -57,15 +57,13 @@ module Rukuli
     #
     # Returns nothing
     def right_click(*args)
-      begin
-        case args.length
+      case args.length
         when 1 then @java_obj.rightClick(args[0], 0)
         when 2 then @java_obj.rightClick(offset_location(args[0], args[1]))
         else raise ArgumentError
-        end
+      end
       rescue NativeException => e
         raise_exception e, args[0]
-      end
     end
 
     # Public: Performs a click and hold on an image match or point (x, y)
