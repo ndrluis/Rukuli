@@ -44,6 +44,28 @@ module Rukuli
       end
     end
 
+    # Public: Performs a right click on an image match or point (x, y)
+    #
+    # args - String representing filename of image to find and click
+    # args - Fixnum, Fixnum representing x and y coordinates within
+    # a Region (0,0) is the top left
+    #
+    # Examples
+    #
+    #   region.right_click('smile.png')
+    #   region.right_click(123, 432)
+    #
+    # Returns nothing
+    def right_click(*args)
+      case args.length
+        when 1 then @java_obj.rightClick(args[0], 0)
+        when 2 then @java_obj.rightClick(offset_location(args[0], args[1]))
+        else raise ArgumentError
+      end
+      rescue NativeException => e
+        raise_exception e, args[0]
+    end
+
     # Public: Performs a click and hold on an image match or point (x, y)
     #
     # args - String representing filename of image to find and click
